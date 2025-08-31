@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 const LogoWrapper = styled.div`
   height: 48px;
@@ -19,9 +20,15 @@ const Page = styled.div`
   color: white;
 `;
 
+const Branding = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Header = styled.header`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem 2rem;
   background: #1e293b;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -31,6 +38,22 @@ const SiteName = styled.h1`
   font-size: 1.8rem;
   font-weight: bold;
   letter-spacing: 1px;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  gap: 1.5rem;
+`;
+
+const NavLink = styled(Link)`
+  color: #e2e8f0;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #38bdf8; // sky-400 hover color
+  }
 `;
 
 const Container = styled.div`
@@ -118,17 +141,25 @@ export default function SearchClient() {
   return (
     <Page>
       <Header>
-        <LogoWrapper>
-          <Image
-            src="/awowogei_logo.webp"
-            alt="Awowogei logo"
-            fill
-            style={{ objectFit: "contain" }}
-            priority
-          />
-        </LogoWrapper>
-        <SiteName>Awowogei</SiteName>
+        <Branding>
+          <LogoWrapper>
+            <Image
+              src="/awowogei_logo.webp"
+              alt="Awowogei logo"
+              fill
+              style={{ objectFit: "contain" }}
+              priority
+            />
+          </LogoWrapper>
+          <SiteName>Awowogei</SiteName>
+        </Branding>
+        <Nav>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/leaderboards">Leaderboards</NavLink>
+          <NavLink href="/about">About</NavLink>
+        </Nav>
       </Header>
+
       <Container>
         <Title>Search for a Player</Title>
         <div>
